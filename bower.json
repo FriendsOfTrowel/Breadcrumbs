@@ -1,0 +1,48 @@
+{
+  "name": "trowel-breadcrumbs",
+  "homepage": "https://github.com/FriendsOfTrowel/Breadcrumbs",
+  "authors": [
+    "Loïc Goyet <loic@troopers.email>"
+  ],
+  "description": "The official Trowel Component for breadcrumbs",
+  "main": [
+    "src/scss/breadcrumbs.scss",
+    "src/twig/breadcrumb.html.twig",
+    "dest/javascript/breadcrumbs.js",
+    "injector.json"
+  ],
+  "moduleType": "globals",
+  "keywords": [
+    "scss",
+    "css",
+    "twig",
+    "html",
+    "javascript",
+    "js",
+    "trowel",
+    "trowel-breadcrumbs",
+    "breadcrumb"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    ".bowerrc",
+    ".gitignore",
+    "gulpfile.babel.js",
+    "yarn.lock",
+    "package-lock.json",
+    "package.json",
+    "webpack.config.js",
+    ".babelrc",
+    "sache.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FriendsOfTrowel/Breadcrumbs.git"
+  },
+  "dependencies": {
+    "trowel-core": "^4.0.2"
+  }
+}

@@ -1,0 +1,162 @@
+/**
+ * Breadcrumbs
+ */
+
+@import 'utils/enables';
+@import 'utils/syntaxes';
+@import 'utils/trowel-variables';
+@import 'utils/list-gutter';
+
+$breadcrumb--selector: selector(new 'breadcrumb' with $breadcrumbs--syntax);
+
+@include statement($breadcrumb--selector, (
+  ('font-size', $breadcrumbs--font-size),
+  ('font-family', $breadcrumbs--font-family),
+  ('font-weight', $breadcrumbs--font-weight),
+  ('text-transform', $breadcrumbs--text-transform),
+  ('letter-spacing', $breadcrumbs--letter-spacing),
+  ('line-height', $breadcrumbs--line-height),
+  ('text-align', $breadcrumbs--text-align),
+  ('text-decoration', $breadcrumbs--text-decoration),
+  ('margin', $breadcrumbs--margin),
+  ('padding', $breadcrumbs--padding),
+  ('border-width', $breadcrumbs--border-width),
+  ('border-style', $breadcrumbs--border-style),
+  ('border-color', $breadcrumbs--border-color),
+  ('border-radius', $breadcrumbs--border-radius),
+  ('color', $breadcrumbs--color),
+  ('box-shadow', $breadcrumbs--box-shadow),
+  ('background', $breadcrumbs--background),
+  ('background-color', $breadcrumbs--background-color),
+  ('position', relative),
+));
+
+
+$breadcrumb-header--selector: selector(set $breadcrumb--selector element 'header');
+
+@include statement($breadcrumb-header--selector, (
+  ('display', flex),
+  ('display', none, $breadcrumbs--responsive-breakpoint),
+  ('justify-content', space-between),
+  ('align-items', center),
+));
+
+
+$breadcrumb-toggle--selector: selector(set $breadcrumb--selector element 'toggle');
+
+@include statement($breadcrumb-toggle--selector, (
+  ('display', inline-block),
+  ('text-align', center),
+  ('white-space', nowrap),
+  ('vertical-align', middle),
+  ('user-select', none),
+  ('touch-action', manipulation),
+  ('padding', $breadcrumbs-toggle--padding),
+  ('font-weight', $breadcrumbs-toggle--font-weight),
+  ('line-height', $breadcrumbs-toggle--line-height),
+  ('border', $breadcrumbs-toggle--border),
+  ('padding', $breadcrumbs-toggle--padding),
+  ('font-size', $breadcrumbs-toggle--font-size),
+  ('border-radius', $breadcrumbs-toggle--border-radius),
+  ('transition', $breadcrumbs-toggle--transition),
+  ('background-color', $breadcrumbs-toggle--background-color),
+  ('color', $breadcrumbs-toggle--color),
+  ('cursor', pointer),
+  ('letter-spacing', $breadcrumbs-toggle--letter-spacing),
+  ('font-style', $breadcrumbs-toggle--font-style),
+  ('text-transform', $breadcrumbs-toggle--text-transform),
+  ('text-decoration', $breadcrumbs-toggle--text-decoration),
+  ('box-shadow', $breadcrumbs-toggle--box-shadow),
+));
+
+
+$breadcrumb-back--selector: selector(set $breadcrumb--selector element 'back');
+
+@include statement($breadcrumb-back--selector, (
+  ('display', inline-block),
+  ('text-align', center),
+  ('white-space', nowrap),
+  ('vertical-align', middle),
+  ('user-select', none),
+  ('touch-action', manipulation),
+  ('padding', $breadcrumbs-back--padding),
+  ('font-weight', $breadcrumbs-back--font-weight),
+  ('line-height', $breadcrumbs-back--line-height),
+  ('border', $breadcrumbs-back--border),
+  ('padding', $breadcrumbs-back--padding),
+  ('font-size', $breadcrumbs-back--font-size),
+  ('border-radius', $breadcrumbs-back--border-radius),
+  ('transition', $breadcrumbs-back--transition),
+  ('background-color', $breadcrumbs-back--background-color),
+  ('color', $breadcrumbs-back--color),
+  ('cursor', pointer),
+  ('letter-spacing', $breadcrumbs-back--letter-spacing),
+  ('font-style', $breadcrumbs-back--font-style),
+  ('text-transform', $breadcrumbs-back--text-transform),
+  ('text-decoration', $breadcrumbs-back--text-decoration),
+  ('box-shadow', $breadcrumbs-back--box-shadow),
+));
+
+
+$breadcrumb-list--selector: selector(set $breadcrumb--selector element 'list');
+
+@include statement($breadcrumb-list--selector, (
+  ('display', flex),
+  ('list-style', none),
+  ('padding', 0),
+  ('margin', 0),
+  ('flex-direction', column-reverse),
+  ('flex-direction', row, $breadcrumbs--responsive-breakpoint),
+  ('background-color', $breadcrumbs-list--background-color),
+  ('width', 100%),
+  ('left', 0),
+  ('top', 100%),
+  ('position', absolute),
+  ('position', initial, $breadcrumbs--responsive-breakpoint),
+  ('transform', $breadcrumbs-list--hidden-transform, '[data-state="hidden"'),
+  ('opacity', 0, '[data-state="hidden"'),
+  ('pointer-events', none, '[data-state="hidden"'),
+  ('transition', $breadcrumbs-list--transition),
+  ('transform', initial !important, $breadcrumbs--responsive-breakpoint),
+  ('opacity', initial !important, $breadcrumbs--responsive-breakpoint),
+  ('pointer-events', initial !important, $breadcrumbs--responsive-breakpoint),
+));
+
+
+$breadcrumb-listitem--selector: selector(set $breadcrumb--selector element 'list-item');
+
+@include statement($breadcrumb-listitem--selector, (
+  ('display', flex),
+));
+
+
+// fi in selector name means "following itself"
+$breadcrumb-listitem-separator--selector: selector(set $breadcrumb-listitem--selector pseudo-element 'before');
+$breadcrumb-listitem-fi-separator--selector: selector(append $breadcrumb-listitem-separator--selector parent $breadcrumb-listitem--selector as '+');
+
+@include statement($breadcrumb-listitem-fi-separator--selector, (
+  ('display', none),
+  ('display', initial, $breadcrumbs--responsive-breakpoint),
+  ('content', $breadcrumbs-separator--content),
+  ('margin-left', $breadcrumbs-separator--margin-x),
+  ('margin-right', $breadcrumbs-separator--margin-x),
+));
+
+
+$breadcrumb-item--selector: selector(set $breadcrumb--selector element 'item');
+
+@include statement($breadcrumb-item--selector, (
+  ('flex-grow', 1),
+  ('color', $breadcrumbs-item--color),
+  ('text-decoration', $breadcrumbs-item--text-decoration),
+  ('font-style', $breadcrumbs-item--font-style),
+  ('padding', $breadcrumbs-item--padding),
+  ('background-color', $breadcrumbs-item--background-color),
+  ('font-size', $breadcrumbs-item--font-size),
+  ('text-transform', $breadcrumbs-item--text-transform),
+  ('font-weight', $breadcrumbs-item--font-weight),
+  ('line-height', $breadcrumbs-item--line-height),
+  ('font-family', $breadcrumbs-item--font-family),
+  ('text-shadow', $breadcrumbs-item--text-shadow),
+  ('opacity', $breadcrumbs-item--opacity),
+))

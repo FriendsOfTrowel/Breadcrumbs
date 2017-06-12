@@ -1,0 +1,12 @@
+test/
+.bowerrc
+.gitignore
+bower.json
+sache.json
+gulpfile.babel.js
+node_modules
+bower_components
+yarn.lock
+package-lock.json
+<% if (props.javascript) { %>webpack.config.js<% } %>
+<% if (props.javascript) { %>.babelrc<% } %>

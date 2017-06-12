@@ -1,0 +1,50 @@
+{% set syntax = syntax|default({
+    'prefix': false,
+    'separator': {
+        'prefix': '-',
+        'element': '__',
+        'modifier': '--',
+    },
+}) %}
+
+{% set blockSelector = syntax.prefix|default(false) ? syntax.prefix ~ syntax.separator.prefix ~ 'breadcrumb' : 'breadcrumb' %}
+
+{% set modifiersClasses = '' %}
+{% for modifier in modifiers|default([]) %}
+    {% set modifiersClasses = modifiersClasses ~ ' ' ~ blockSelector ~ syntax.separator.modifier ~ modifier %}
+{% endfor %}
+
+{% set attrsGenerated = '' %}
+{% for attr_name, attr_value in attrs|default([]) %}
+    {% set attrsGenerated = attrsGenerated ~ ' ' ~ attr_name ~ '="' ~ attr_value ~ '"' %}
+{% endfor %}
+
+{% set elementSelector = blockSelector ~ syntax.separator.element %}
+
+<nav
+    class="{{ blockSelector ~ modifiersClasses }}{{ classes|default(false) ? ' ' ~ classes|join(' ') }}"
+    data-flag="breadcrumb"
+    {{ attrsGenerated|raw }}
+>
+    <div class="{{ elementSelector ~ 'header' }}">
+        <button class="{{ elementSelector ~ 'toggle' }}" data-breadcrumb="toggle">
+            Previous pages
+        </button>
+
+        <a class="{{ elementSelector ~ 'back' }}" onclick="history.go(-1)">Back</a>
+    </div>
+
+    <ul class="{{ elementSelector ~ 'list' }}" data-breadcrumb="list" data-state="hidden">
+        <li class="{{ elementSelector ~ 'list-item' }}">
+            <a class="{{ elementSelector ~ 'item' }}" href="#">item 1</a>
+        </li>
+
+        <li class="{{ elementSelector ~ 'list-item' }}">
+            <a class="{{ elementSelector ~ 'item' }}" href="#">item 2</a>
+        </li>
+
+        <li class="{{ elementSelector ~ 'list-item' }}">
+            <span class="{{ elementSelector ~ 'item' }} {{ elementSelector ~ 'item' ~ syntax.separator.modifier ~ 'active' }}">item 3</span>
+        </li>
+    </ul>
+</nav>

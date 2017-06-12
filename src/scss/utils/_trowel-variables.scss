@@ -1,0 +1,134 @@
+$breadcrumbs--responsive-breakpoint: '@sm' !default; // not a trowel variable
+
+$breadcrumbs--font-size: (
+  'default': 0.7rem,
+  $breadcrumbs--responsive-breakpoint: 1rem,
+) !default;
+$breadcrumbs--font-family: null !default;
+$breadcrumbs--font-weight: null !default;
+$breadcrumbs--text-transform: null !default;
+$breadcrumbs--letter-spacing: null !default;
+$breadcrumbs--line-height: null !default;
+$breadcrumbs--text-align: null !default;
+$breadcrumbs--text-decoration: null !default;
+$breadcrumbs--margin: 0 0 1em !default;
+$breadcrumbs--padding: trwl-theme('padding-y') trwl-theme('padding-x') !default;
+$breadcrumbs--border-width: null !default;
+$breadcrumbs--border-style: null !default;
+$breadcrumbs--border-color: null !default;
+$breadcrumbs--border-radius: null !default;
+$breadcrumbs--color: rgb(255, 255, 255) !default;
+$breadcrumbs--box-shadow: null !default;
+$breadcrumbs--background: null !default;
+$breadcrumbs--background-color: trwl-theme-color('primary') !default;
+
+
+// Toggle
+// ------
+
+$breadcrumbs-toggle--padding: trwl-theme('padding-y') trwl-theme('padding-x') !default;
+$breadcrumbs-toggle--font-weight: null !default;
+$breadcrumbs-toggle--line-height: trwl-theme('line-height') !default;
+$breadcrumbs-toggle--border: 0 !default;
+$breadcrumbs-toggle--padding: null !default;
+$breadcrumbs-toggle--border-radius: trwl-theme('border-radius') !default;
+$breadcrumbs-toggle--font-size: 1em !default;
+$breadcrumbs-toggle--border-radius: null !default;
+$breadcrumbs-toggle--transition: null !default;
+$breadcrumbs-toggle--background-color: (
+  'default': trwl-theme-color('danger'),
+  ':hover': darken(trwl-theme-color('danger'), 20%),
+  ':active': darken(trwl-theme-color('danger'), 20%),
+  ':focus': darken(trwl-theme-color('danger'), 20%),
+) !default;
+$breadcrumbs-toggle--color: rgb(255, 255, 255) !default;
+$breadcrumbs-toggle--letter-spacing: null !default;
+$breadcrumbs-toggle--font-style: null !default;
+$breadcrumbs-toggle--text-transform: null !default;
+$breadcrumbs-toggle--text-decoration: null !default;
+$breadcrumbs-toggle--box-shadow: null !default;
+
+
+// Back
+// ----
+
+$breadcrumbs-back--padding: null !default;
+$breadcrumbs-back--font-weight: null !default;
+$breadcrumbs-back--line-height: trwl-theme('line-height') !default;
+$breadcrumbs-back--border: null !default;
+$breadcrumbs-back--padding: null !default;
+$breadcrumbs-back--border-radius: null !default;
+$breadcrumbs-back--font-size: 1em !default;
+$breadcrumbs-back--border-radius: null !default;
+$breadcrumbs-back--transition: null !default;
+$breadcrumbs-back--background-color: null !default;
+$breadcrumbs-back--color: rgb(255, 255, 255) !default;
+$breadcrumbs-back--letter-spacing: null !default;
+$breadcrumbs-back--font-style: null !default;
+$breadcrumbs-back--text-transform: null !default;
+$breadcrumbs-back--text-decoration: (
+  ':hover': underline,
+  ':active': underline,
+  ':focus': underline,
+) !default;
+$breadcrumbs-back--box-shadow: null !default;
+
+
+// List
+// ----
+
+$breadcrumbs-list--background-color: $breadcrumbs--background-color !default;
+$breadcrumbs-list--transition: all 300ms ease-in-out;
+$breadcrumbs-list--hidden-transform: translateY(-25%);
+
+
+// Separator
+// ---------
+
+$breadcrumbs-separator--content: '>' !default;
+$breadcrumbs-separator--margin-x: 0.5em !default;
+
+
+// Item
+// ----
+
+$breadcrumbs-item--color: inherit !default;
+$breadcrumbs-item--text-decoration: (
+  'default': underline,
+  ':hover': none,
+  ':active': none,
+  ':focus': none,
+  '~active': none,
+) !default;
+$breadcrumbs-item--font-style: (
+  'default': italic,
+  '~active': initial,
+) !default;
+$breadcrumbs-item--padding: (
+  'default': trwl-theme('padding-y') trwl-theme('padding-x'),
+  $breadcrumbs--responsive-breakpoint: 0,
+) !default;
+$breadcrumbs-item--background-color: (
+  '<a': (
+    ':hover': rgba(255, 255, 255, 0.25),
+    ':active': rgba(255, 255, 255, 0.25),
+    ':focus': rgba(255, 255, 255, 0.25),
+    $breadcrumbs--responsive-breakpoint: (
+      ':hover': initial,
+      ':active': initial,
+      ':focus': initial,
+    ),
+  ),
+) !default;
+$breadcrumbs-item--font-size: null !default;
+$breadcrumbs-item--text-transform: null !default;
+$breadcrumbs-item--font-weight: null !default;
+$breadcrumbs-item--line-height: null !default;
+$breadcrumbs-item--font-family: null !default;
+$breadcrumbs-item--text-shadow: null !default;
+$breadcrumbs-item--opacity: (
+  '~active': (
+    'default': 0.5,
+    $breadcrumbs--responsive-breakpoint: initial,
+  ),
+) !default;
