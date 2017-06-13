@@ -2,10 +2,8 @@
  * Breadcrumbs
  */
 
-@import 'utils/enables';
 @import 'utils/syntaxes';
 @import 'utils/trowel-variables';
-@import 'utils/list-gutter';
 
 $breadcrumb--selector: selector(new 'breadcrumb' with $breadcrumbs--syntax);
 
