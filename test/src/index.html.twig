@@ -15,9 +15,19 @@
         Breadcrumbs
     </h1>
 
-    {% embed '../../src/twig/breadcrumb.html.twig' %}
-        {% block body %}hello world !{% endblock %}
-    {% endembed %}
+    {% include '../../src/twig/breadcrumb.html.twig' with {
+        "items": [{
+            "href": "#",
+            "label": "item 1",
+        }, {
+            "href": "#",
+            "label": "item 2",
+        }, {
+            "label": "item 3",
+            "active": true,
+        }]
+    } %}
+
 
     <script src="./javascript/breadcrumbs.js"></script>
 

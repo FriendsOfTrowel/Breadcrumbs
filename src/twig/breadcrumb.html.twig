@@ -26,25 +26,43 @@
     data-flag="breadcrumb"
     {{ attrsGenerated|raw }}
 >
-    <div class="{{ elementSelector ~ 'header' }}">
-        <button class="{{ elementSelector ~ 'toggle' }}" data-breadcrumb="toggle">
-            Previous pages
-        </button>
+    {% block header %}
+        <div class="{{ elementSelector ~ 'header' }}">
+            {% block toggle %}
+                <button class="{{ elementSelector ~ 'toggle' }}" data-breadcrumb="toggle">
+                    {% block toggle_label %}Previous pages{% endblock %}
+                </button>
+            {% endblock toggle %}
 
-        <a class="{{ elementSelector ~ 'back' }}" onclick="history.go(-1)">Back</a>
-    </div>
+            {% block back %}
+                <a class="{{ elementSelector ~ 'back' }}" onclick="history.go(-1)">
+                    {% block back_label %}Back{% endblock %}
+                </a>
+            {% endblock back %}
+        </div>
+    {% endblock header %}
 
-    <ul class="{{ elementSelector ~ 'list' }}" data-breadcrumb="list" data-state="hidden">
-        <li class="{{ elementSelector ~ 'list-item' }}">
-            <a class="{{ elementSelector ~ 'item' }}" href="#">item 1</a>
-        </li>
+    {% block list %}
+        <ul class="{{ elementSelector ~ 'list' }}" data-breadcrumb="list" data-state="hidden">
+            {% block list_inner %}
+                {% for item in items %}
+                    {% set itemActive = item.active|default(false) %}
 
-        <li class="{{ elementSelector ~ 'list-item' }}">
-            <a class="{{ elementSelector ~ 'item' }}" href="#">item 2</a>
-        </li>
-
-        <li class="{{ elementSelector ~ 'list-item' }}">
-            <span class="{{ elementSelector ~ 'item' }} {{ elementSelector ~ 'item' ~ syntax.separator.modifier ~ 'active' }}">item 3</span>
-        </li>
-    </ul>
+                    <li class="{{ elementSelector ~ 'list-item' }}">
+                        {% if itemActive %}
+                            <span class="{{ elementSelector ~ 'item' }} {{ elementSelector ~ 'item' ~ syntax.separator.modifier ~ 'active' }}">
+                        {% else %}
+                            <a class="{{ elementSelector ~ 'item' }}"{% if item.href|default(false) %} href="{{ item.href }}"{% endif %}>
+                        {% endif %}
+                            {{ item.label }}
+                        {% if itemActive %}
+                            </span>
+                        {% else %}
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% endblock list_inner %}
+        </ul>
+    {% endblock list %}
 </nav>
