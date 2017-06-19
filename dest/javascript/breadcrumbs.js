@@ -128,8 +128,8 @@ var TrowelBreadcrumb = function () {
       return this.list.setAttribute('data-state', 'hidden');
     }
   }, {
-    key: 'touchToggle',
-    value: function touchToggle() {
+    key: 'toggle',
+    value: function toggle() {
       return this.isVisible() ? this.hide() : this.show();
     }
   }, {
@@ -138,7 +138,7 @@ var TrowelBreadcrumb = function () {
       var _this = this;
 
       return this.toggleTriggers.map(function (toggleTrigger) {
-        return toggleTrigger.addEventListener('click', _this.touchToggle.bind(_this));
+        return toggleTrigger.addEventListener('click', _this.toggle.bind(_this));
       });
     }
   }]);

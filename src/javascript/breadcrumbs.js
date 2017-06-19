@@ -27,13 +27,13 @@ class TrowelBreadcrumb {
     return this.list.setAttribute('data-state', 'hidden');
   }
 
-  touchToggle() {
+  toggle() {
     return this.isVisible() ? this.hide() : this.show();
   }
 
 
   listener() {
     return this.toggleTriggers
-      .map(toggleTrigger => toggleTrigger.addEventListener('click', this.touchToggle.bind(this)));
+      .map(toggleTrigger => toggleTrigger.addEventListener('click', this.toggle.bind(this)));
   }
 }
