@@ -15,12 +15,22 @@ class TrowelBreadcrumb {
     return this.listener();
   }
 
-  touchToggle() {
-    let newState = 'hidden';
-    if (this.list.getAttribute('data-state') === "hidden") newState = 'visible';
-
-    return this.list.setAttribute('data-state', newState)
+  isVisible() {
+    return this.list.getAttribute('data-state') === "visible";
   }
+
+  show() {
+    return this.list.setAttribute('data-state', 'visible');
+  }
+
+  hide() {
+    return this.list.setAttribute('data-state', 'hidden');
+  }
+
+  touchToggle() {
+    return this.isVisible() ? this.hide() : this.show();
+  }
+
 
   listener() {
     return this.toggleTriggers

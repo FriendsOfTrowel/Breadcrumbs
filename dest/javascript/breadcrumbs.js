@@ -113,12 +113,24 @@ var TrowelBreadcrumb = function () {
   }
 
   _createClass(TrowelBreadcrumb, [{
+    key: 'isVisible',
+    value: function isVisible() {
+      return this.list.getAttribute('data-state') === "visible";
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      return this.list.setAttribute('data-state', 'visible');
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      return this.list.setAttribute('data-state', 'hidden');
+    }
+  }, {
     key: 'touchToggle',
     value: function touchToggle() {
-      var newState = 'hidden';
-      if (this.list.getAttribute('data-state') === "hidden") newState = 'visible';
-
-      return this.list.setAttribute('data-state', newState);
+      return this.isVisible() ? this.hide() : this.show();
     }
   }, {
     key: 'listener',
