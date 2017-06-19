@@ -109,16 +109,53 @@ var TrowelBreadcrumb = function () {
     this.toggleTriggers = [].slice.call(this.element.querySelectorAll('[data-breadcrumb="toggle"]'));
     this.list = this.element.querySelector('[data-breadcrumb="list"]');
 
-    return this.listener();
+    this.events = this.events();
+    this.listener();
+    this.element.dispatchEvent(this.events.mounted);
+    return;
   }
 
   _createClass(TrowelBreadcrumb, [{
-    key: 'touchToggle',
-    value: function touchToggle() {
-      var newState = 'hidden';
-      if (this.list.getAttribute('data-state') === "hidden") newState = 'visible';
+    key: 'isVisible',
+    value: function isVisible() {
+      return this.list.getAttribute('data-state') === "visible";
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      this.element.dispatchEvent(this.events.show);
+      this.list.setAttribute('data-state', 'visible');
+      this.element.dispatchEvent(this.events.shown);
+      return;
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      this.element.dispatchEvent(this.events.hide);
+      this.list.setAttribute('data-state', 'hidden');
+      this.element.dispatchEvent(this.events.hidden);
+      return;
+    }
+  }, {
+    key: 'toggle',
+    value: function toggle() {
+      this.element.dispatchEvent(this.events.toggle);
+      this.isVisible() ? this.hide() : this.show();
+      this.element.dispatchEvent(this.events.toggled);
+      return;
+    }
+  }, {
+    key: 'events',
+    value: function events() {
+      var show = new Event('trowel.breadcrumb.show');
+      var shown = new Event('trowel.breadcrumb.shown');
+      var hide = new Event('trowel.breadcrumb.hide');
+      var hidden = new Event('trowel.breadcrumb.hidden');
+      var toggle = new Event('trowel.breadcrumb.toggle');
+      var toggled = new Event('trowel.breadcrumb.toggled');
+      var mounted = new Event('trowel.breadcrumb.mounted');
 
-      return this.list.setAttribute('data-state', newState);
+      return { show: show, shown: shown, hide: hide, hidden: hidden, toggle: toggle, toggled: toggled, mounted: mounted };
     }
   }, {
     key: 'listener',
@@ -126,7 +163,7 @@ var TrowelBreadcrumb = function () {
       var _this = this;
 
       return this.toggleTriggers.map(function (toggleTrigger) {
-        return toggleTrigger.addEventListener('click', _this.touchToggle.bind(_this));
+        return toggleTrigger.addEventListener('click', _this.toggle.bind(_this));
       });
     }
   }]);
