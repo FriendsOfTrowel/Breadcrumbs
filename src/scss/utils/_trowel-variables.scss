@@ -78,8 +78,8 @@ $breadcrumbs-back--box-shadow: null !default;
 // ----
 
 $breadcrumbs-list--background-color: $breadcrumbs--background-color !default;
-$breadcrumbs-list--transition: all 300ms ease-in-out;
-$breadcrumbs-list--hidden-transform: translateY(-25%);
+$breadcrumbs-list--transition: all 300ms ease-in-out !default;
+$breadcrumbs-list--hidden-transform: translateY(-25%) !default;
 
 
 // Separator
